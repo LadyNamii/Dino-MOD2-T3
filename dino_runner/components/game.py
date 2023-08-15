@@ -98,7 +98,7 @@ class Game:
          pos_y_center= 50  
         )
         
-    def draw_power_up_time(self): #pode acrescentar poderzinho
+    def draw_power_up_time(self): 
        if self.player.has_power_up:
            time_to_show = round ((self.player.power_up_time - pygame.get_ticks())/ 1000,2) # tem que fazer essa mesma linha para outro poder
            if time_to_show >= 0:
@@ -112,6 +112,8 @@ class Game:
            else:
                self.player.has_power_up = False
                self.player.type = DEFAULT_TYPE
+               
+     
             
     def show_menu(self):
         self.screen.fill((255,255,255))
