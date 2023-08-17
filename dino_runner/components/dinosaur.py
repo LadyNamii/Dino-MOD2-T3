@@ -1,7 +1,7 @@
 from typing import Any
 import pygame
 from pygame.sprite import Sprite
-from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING, DEFAULT_TYPE, SHIELD_TYPE, DUCKING_SHIELD, JUMPING_SHIELD, RUNNING_SHIELD
+from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING, DEFAULT_TYPE, SHIELD_TYPE, DUCKING_SHIELD, JUMPING_SHIELD, RUNNING_SHIELD,JUMP_SOUND
 
  
 
@@ -9,7 +9,7 @@ DUCK_IMG = { DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD}
 JUMP_IMG = { DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD}
 RUN_IMG = { DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD}
 X_POS = 80
-Y_POS = 310
+Y_POS = 340
 Y_POS_DUCK = 340
 JUMP_VEL = 8.5
 
@@ -31,10 +31,11 @@ class Dinosaur(Sprite):
     def setup_state(self):
         self.has_power_up = False
         self.shield = False
-        self.show_text = False
+        self.show_text = True 
         self.shield_time_up = 0
     
     def update(self, user_input):
+       
         if self.dino_run:
             self.run()        
         elif self.dino_jump:
@@ -42,6 +43,7 @@ class Dinosaur(Sprite):
         elif self.dino_duck:
             self.duck()
         if user_input[pygame.K_UP] and not self.dino_jump:
+            JUMP_SOUND.play()
             self.dino_run = False
             self.dino_jump = True
             self.dino_duck = False
@@ -53,8 +55,8 @@ class Dinosaur(Sprite):
             self.dino_run = True
             self.dino_jump = False
             self.dino_duck = False
-        if self.step_index >= 9:
-            self.step_index = 0
+        if self.step_index >= 9: #se a contagem de passos chegar a 9 
+            self.step_index = 0  # é reiniciada para 0
     
     def run(self):
         self.image = RUN_IMG[self.type][self.step_index // 5]

@@ -1,6 +1,8 @@
 import pygame
 import os
 
+pygame.init()
+
 # Global Constants
 TITLE = "Chrome Dino Runner"
 SCREEN_HEIGHT = 600
@@ -11,15 +13,16 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
 
-RUNNING = [
-#     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
-#     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Cat/cat1.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Cat/cat2.png")),
+RUNNING = [ 
+    
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1 (2).png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
 ]
+
 
 RUNNING_SHIELD = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Shield.png")),
+
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
 ]
 
@@ -28,7 +31,7 @@ RUNNING_HAMMER = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
 ]
 
-JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJump.png"))
+JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Cat/DinoJumpp.png"))
 JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpShield.png"))
 JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
 
@@ -70,6 +73,18 @@ HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
+IMAGEM_FUNDO = pygame.image.load(os.path.join(IMG_DIR, 'Other/cenario.jpg'))
+IMAGEM_FUNDO = pygame.transform.scale(IMAGEM_FUNDO, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
+JUMP_SOUND = pygame.mixer.Sound(os.path.join(IMG_DIR,"Other/jump_sound.wav" ))
+JUMP_SOUND.set_volume(1)
+
+SOM_DO_CENARIO = pygame.mixer.music.load(os.path.join(IMG_DIR,"Other/somdocenario.wav"))
+pygame.mixer.music.play(-1)
+
+START = pygame.image.load(os.path.join(IMG_DIR, 'Other/start_btn.png'))
+
+
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
